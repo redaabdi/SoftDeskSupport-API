@@ -1,10 +1,12 @@
 from django.contrib import admin
 from django.urls import path
-from .views import PostView, PostUpdateDelete, SearchPost
+from .views import SignupView, ProfileView
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', PostView.as_view(), name='post-view'),
-    path('api/<int:pk>', PostUpdateDelete.as_view(), name='post-update-delete'),
-    path('api/search', SearchPost.as_view(), name='search-post')
+    path('api/signup/', SignupView.as_view(), name='signup'),
+    path('api/login/', TokenObtainPairView.as_view(), name='login'),
+    path('api/login/refresh/', TokenRefreshView.as_view(), name='login_refresh'),
+    path('api/profile/', ProfileView.as_view(), name='profile')
 ]

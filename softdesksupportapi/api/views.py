@@ -1,34 +1,20 @@
-from django.shortcuts import render
-from rest_framework import generics, status
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from .models import Post
-from .serializers import PostSerializer
+from rest_framework import generics,permissions, viewsets
+from rest_framework.permissions import IsAuthenticated
+from .models import User
+from .serializers import SignupSerializer, UserProfileSerializer
 
 
-class PostView(generics.ListCreateAPIView):
-    queryset = Post.objects.all()
-    serializer_class = PostSerializer
+class SignupView(generics.CreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = SignupSerializer
+    permission_classes = [permissions.AllowAny]
 
-class PostUpdateDelete(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Post.objects.all()
-    serializer_class = PostSerializer
-    lookup_field = "pk"
+class ProfileView(generics.RetrieveAPIView):
+    serializer_class = UserProfileSerializer
+    permission_classes = [IsAuthenticated]
+    def get_object(self):
+        return self.request.user
 
-class SearchPost(APIView):
-    # def get(self, request, format=None):
-    #     title = request.query_params.get("title", "")
-    #     posts = Post.objects.filter(title_icontains=title)
-    #     serializer = PostSerializer(posts, many=True)
-    #     return Response(serializer.data, status=status.HTTP_200_OK)
-
-    def get (self, request, format=None) :
-        # Get the title from the query parameters (if none, default to empty string)
-        title = request.query_params.get("title", "")
-        if title:
-            posts = Post.objects.filter(title__icontains=title)
-        else:
-            posts = Post.objects.all()
-
-        serializer = PostSerializer(posts, many=True)
-        return Response(serializer.data, status=status. HTTP_200_OK)
+class ProjectView(viewsets.ModelViewSet):
+    pass
+    
