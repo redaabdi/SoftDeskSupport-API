@@ -1,11 +1,10 @@
 from rest_framework import generics,permissions, viewsets
 from rest_framework.permissions import IsAuthenticated
-from .models import User
-from .serializers import SignupSerializer, UserProfileSerializer
+from .serializers import SignupSerializer, UserProfileSerializer, ProjectSerializer
+from .models import Project
 
 
 class SignupView(generics.CreateAPIView):
-    queryset = User.objects.all()
     serializer_class = SignupSerializer
     permission_classes = [permissions.AllowAny]
 
@@ -16,5 +15,9 @@ class ProfileView(generics.RetrieveAPIView):
         return self.request.user
 
 class ProjectView(viewsets.ModelViewSet):
-    pass
+    serializer_class = ProjectSerializer
+    permission_classes = [IsAuthenticated]
+    def get_queryset(self):
+        Project.objects.filter(contributors=self.request.user)
+
     
