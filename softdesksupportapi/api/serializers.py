@@ -12,7 +12,7 @@ class SignupSerializer(serializers.ModelSerializer):
         return value
 
     def create(self, validated_data):
-        return User.objects.create_user(**validated_data)
+        return User.objects.create_user(**validated_data) #hasher le mot de passe
 
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
@@ -20,14 +20,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
         fields = ['id', 'username', 'can_be_contacted', 'can_data_be_shared', 'age', 'date_joined']
 
 class ProjectSerializer(serializers.ModelSerializer):
+    author = serializers.SlugRelatedField(slug_field='username', read_only=True)
     class Meta:
         model = Project
-        fields = ['id', 'name', 'description', 'contributors']
-        read_only_fields = ['contributors']
-
-    def validate_contributors(self, value):
-        value = [self.request.user]
-        return value
-    
-    def create(self, validated_data) :
-        return Project.objects.create(**validated_data)
+        fields = ['id', 'name', 'description', 'author']

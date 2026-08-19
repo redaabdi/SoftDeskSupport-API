@@ -1,7 +1,7 @@
 from rest_framework import generics,permissions, viewsets
 from rest_framework.permissions import IsAuthenticated
 from .serializers import SignupSerializer, UserProfileSerializer, ProjectSerializer
-from .models import Project
+from .models import Project, Contributor
 
 
 class SignupView(generics.CreateAPIView):
@@ -17,7 +17,13 @@ class ProfileView(generics.RetrieveAPIView):
 class ProjectView(viewsets.ModelViewSet):
     serializer_class = ProjectSerializer
     permission_classes = [IsAuthenticated]
+
     def get_queryset(self):
-        Project.objects.filter(contributors=self.request.user)
+        return Project.objects.filter(contributor__user=self.request.user)
+    
+    def perform_create(self, serializer): #override create de la vue
+        project = serializer.save(author=self.request.user)
+        Contributor.objects.create(user=self.request.user, project=project)
+    
 
     
