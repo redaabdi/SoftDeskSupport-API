@@ -53,33 +53,33 @@ python manage.py runserver
 
 A l'aide de Postman ou d'un autre outil, faites les requêtes sans oublier le préfixe "http://127.0.0.1:8000/"
 
-|  # | Point de terminaison d'API                                                | Méthode HTTP | URL                                           |
-|  1 | Connexion du user (obtenir les tokens)                                    | `POST`       | `api/login/`                                  |
-|  2 | Obtenir un nouvel access token à partir du refresh token                  | `POST`       | `api/login/refresh/`                          |
-|  3 | Inscription du user                                                       | `POST`       | `api/signup/`                                 |
-|  4 | Afficher le profil du user connecté                                       | `GET`        | `api/profile/`                                |
-|  5 | Modifier le profil du user connecté                                       | `PUT/PATCH`  | `api/profile/`                                |
-|  6 | Supprimer le profil du user connecté                                      | `DELETE`     | `api/profile/`                                |
-|  7 | Afficher la liste des projets dont le user est contributeur               | `GET`        | `api/projects/`                               |
-|  8 | Créer un projet                                                           | `POST`       | `api/projects/`                               |
-|  9 | Afficher les détails d'un projet dont le user est contributeur            | `GET`        | `api/projects/{id}/`                          |
-| 10 | Mettre à jour un projet                                                   | `PUT/PATCH`  | `api/projects/{id}/`                          |
-| 11 | Supprimer un projet                                                       | `DELETE`     | `api/projects/{id}/`                          |
-| 12 | Afficher la liste de tous les contributeurs (users) d'un projet (project) | `GET`        | `api/projects/{id}/contributors/`             |
-| 13 | Ajouter un contributeur (user) à un projet                                | `POST`       | `api/projects/{id}/contributors/`             |
-| 14 | Afficher un contributeur d'un projet                                      | `GET`        | `api/projects/{id}/contributors/{id}`         |
-| 15 | Supprimer un contributeur d'un projet                                     | `DELETE`     | `api/projects/{id}/contributors/{id}`         |
-| 16 | Afficher la liste des problèmes (issues) liés à un projet (project)       | `GET`        | `api/projects/{id}/issues/`                   |
-| 17 | Créer un problème dans un projet                                          | `POST`       | `api/projects/{id}/issues/`                   |
-| 18 | Afficher un problème d'un projet via son id                               | `GET`        | `api/projects/{id}/issues/{id}`               |
-| 19 | Mettre à jour un problème dans un projet                                  | `PUT/PATCH`  | `api/projects/{id}/issues/{id}`               |
-| 20 | Supprimer un problème d'un projet                                         | `DELETE`     | `api/projects/{id}/issues/{id}`               |
-| 21 | Afficher les commentaires liés à un problème (issue)                      | `GET`        | `api/projects/{id}/issues/{id}/comments/`     |
-| 22 | Créer un commentaire sur un problème                                      | `POST`       | `api/projects/{id}/issues/{id}/comments/`     |
-| 23 | Afficher un commentaire (comment) via son id                              | `GET`        | `api/projects/{id}/issues/{id}/comments/{id}` |
-| 24 | Modifier un commentaire                                                   | `PUT/PATCH`  | `api/projects/{id}/issues/{id}/comments/{id}` |
-| 25 | Supprimer un commentaire                                                  | `DELETE`     | `api/projects/{id}/issues/{id}/comments/{id}` |
-
+| #  | Endpoint                  | Méthode     | URL                                           |
+| -- | ------------------------- | ----------- | --------------------------------------------- |
+| 1  | Connexion du user         | `POST`      | `api/login/`                                  |
+| 2  | Refresh du token          | `POST`      | `api/login/refresh/`                          |
+| 3  | Inscription du user       | `POST`      | `api/signup/`                                 |
+| 4  | Afficher le profil        | `GET`       | `api/profile/`                                |
+| 5  | Modifier le profil        | `PUT/PATCH` | `api/profile/`                                |
+| 6  | Supprimer le profil       | `DELETE`    | `api/profile/`                                |
+| 7  | Liste des projets         | `GET`       | `api/projects/`                               |
+| 8  | Créer un projet           | `POST`      | `api/projects/`                               |
+| 9  | Détails d'un projet       | `GET`       | `api/projects/{id}/`                          |
+| 10 | Modifier un projet        | `PUT/PATCH` | `api/projects/{id}/`                          |
+| 11 | Supprimer un projet       | `DELETE`    | `api/projects/{id}/`                          |
+| 12 | Liste des contributeurs   | `GET`       | `api/projects/{id}/contributors/`             |
+| 13 | Ajouter un contributeur   | `POST`      | `api/projects/{id}/contributors/`             |
+| 14 | Afficher un contributeur  | `GET`       | `api/projects/{id}/contributors/{id}`         |
+| 15 | Supprimer un contributeur | `DELETE`    | `api/projects/{id}/contributors/{id}`         |
+| 16 | Liste des issues          | `GET`       | `api/projects/{id}/issues/`                   |
+| 17 | Créer une issue           | `POST`      | `api/projects/{id}/issues/`                   |
+| 18 | Afficher une issue        | `GET`       | `api/projects/{id}/issues/{id}`               |
+| 19 | Modifier une issue        | `PUT/PATCH` | `api/projects/{id}/issues/{id}`               |
+| 20 | Supprimer une issue       | `DELETE`    | `api/projects/{id}/issues/{id}`               |
+| 21 | Liste des commentaires    | `GET`       | `api/projects/{id}/issues/{id}/comments/`     |
+| 22 | Créer un commentaire      | `POST`      | `api/projects/{id}/issues/{id}/comments/`     |
+| 23 | Afficher un commentaire   | `GET`       | `api/projects/{id}/issues/{id}/comments/{id}` |
+| 24 | Modifier un commentaire   | `PUT/PATCH` | `api/projects/{id}/issues/{id}/comments/{id}` |
+| 25 | Supprimer un commentaire  | `DELETE`    | `api/projects/{id}/issues/{id}/comments/{id}` |
 
 
 ## Crédits
