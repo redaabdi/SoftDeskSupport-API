@@ -20,7 +20,7 @@ urlpatterns = [
     })),
     path('api/projects/<int:project_pk>/contributors/', ContributorViewSet.as_view({
         'get': 'list',
-        'post': 'create',  
+        'post': 'create',
     })
     ),
     path('api/projects/<int:project_pk>/contributors/<int:pk>/', ContributorViewSet.as_view({
